@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   char.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/16 14:34:43 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/19 13:06:30 by fras          ########   odam.nl         */
+/*   Created: 2022/12/16 19:16:13 by fras          #+#    #+#                 */
+/*   Updated: 2022/12/18 12:20:04 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	pf_putchar(char c)
 {
-	int ret;
-	va_list	ap;
-
-	va_start(ap, format);
-	ret = index_handler(ap, format);
-	va_end(ap);
-	return (ret);
+	write(1, &c, 1);
+	return (1);
 }

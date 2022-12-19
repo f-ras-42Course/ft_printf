@@ -6,7 +6,7 @@
 #    By: fras <fras@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/16 14:34:17 by fras          #+#    #+#                  #
-#    Updated: 2022/12/16 14:34:29 by fras          ########   odam.nl          #
+#    Updated: 2022/12/19 14:08:01 by fras          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS = -Werror -Wextra -Wall $(INCLUDE)
 INCLUDE = -I ./include
 SRC_DIR = src
 OBJ_DIR = obj
-SOURCES = $(shell find $(SRC_DIR) -type f -name "*.c")
+SOURCES = $(shell find $(SRC_DIR) -type f -name "*.c" ! -name "test.c")
 OBJECTS = $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(SOURCES:%.c=%.o))
+TESTSRC = test.c
 
 
 .PHONY: all clean fclean re directories
@@ -41,3 +42,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+test: $(TESTSRC) $(NAME)
+	$(CC) $(CFLAGS) $< -L. $(NAME) -o $@
