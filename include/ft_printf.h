@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/19 14:08:04 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/22 23:55:42 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,23 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-typedef int (*Jump_index)(va_list ap);
+typedef struct s_type_selections
+{
+	va_list data;
+	char 	chr;
+	const char 	*str;
+}	t_type_selections;
+
+typedef int (*t_Jump_index)(t_type_selections *);
+
 
 int		ft_printf(const char *format, ...);
 int		index_handler(va_list ap, const char *format);
-int		print_conversion(va_list ap, const char *format);
-int		pf_putstr(char *s);
-int		pf_strlen(const char *s);
-int		pf_putchar(char c);
+int		print_conversion(va_list ap, const char index);
+int		pf_putstr(t_type_selections *vars);
+int		pf_strlen(const char *str);
+int		pf_putchar(const char c);
+int		pf_putchar2(t_type_selections *vars);
+int		pf_putpercent(t_type_selections *vars);
 
 #endif
