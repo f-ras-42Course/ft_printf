@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 00:00:10 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 00:31:01 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	index_handler(va_list ap, const char *format)
 		else
 		{
 			print:
-			ret += pf_putchar(*format);
+			ret += pf_printer(*format);
 			format++;
 		}
 	}
@@ -41,14 +41,10 @@ int	index_handler(va_list ap, const char *format)
 
 int		print_conversion(va_list ap, const char index)
 {
-	t_type_selections *vars;
-
-	vars = malloc(sizeof(t_type_selections));
 	t_Jump_index	convert[] = {
-	['c'] = &pf_putchar2,
+	['c'] = &pf_putchar,
 	['s'] = &pf_putstr,
 	};
-	va_copy(vars->data, ap);
 	
-	return(convert[(unsigned int)index](vars));
+	return(convert[(unsigned int)index](ap));
 }

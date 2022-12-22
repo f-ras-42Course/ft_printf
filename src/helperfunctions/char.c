@@ -6,21 +6,23 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 19:16:13 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/22 23:52:52 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 00:18:57 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pf_putchar(const char c)
+int	pf_printer(const char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	pf_putchar2(t_type_selections *vars)
+int	pf_putchar(va_list ap)
 {
-	vars->chr = va_arg(vars->data, int);
-	write(1, &vars->chr, 1);
+	char c;
+
+	c = va_arg(ap, int);
+	write(1, &c, 1);
 	return (1);
 }

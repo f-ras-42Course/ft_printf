@@ -6,17 +6,19 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/18 11:58:07 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/22 23:56:50 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 00:16:06 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pf_putstr(t_type_selections *vars)
+int	pf_putstr(va_list ap)
 {
-	vars->str = va_arg(vars->data, char *);
-	write(1, vars->str, pf_strlen(vars->str));
-	return(pf_strlen(vars->str));
+	char *str;
+
+	str = va_arg(ap, char *);
+	write(1, str, pf_strlen(str));
+	return(pf_strlen(str));
 }
 
 int	pf_strlen(const char *s)
