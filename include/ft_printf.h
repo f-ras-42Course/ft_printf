@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 00:20:06 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 00:58:38 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		pf_printer(const char c);
 int		pf_strlen(const char *str);
 int		pf_putchar(va_list ap);
 int		pf_putstr(va_list ap);
+int		error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 00:31:01 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 01:01:02 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	index_handler(va_list ap, const char *format)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == '\0')
-				break;
 			if (*format == '%')
 				goto print;
+			if (*format != 'c' && *format != 's')
+				return(error());
 			ret += print_conversion(ap, *format);
 			format++;
 		}
