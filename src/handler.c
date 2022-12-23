@@ -6,13 +6,13 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 01:28:51 by fras          ########   odam.nl         */
+/*   Updated: 2022/12/23 01:39:12 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	index_handler(va_list ap, const char *format)
+int			index_handler(va_list ap, const char *format)
 {
 	int	print_length;
 
@@ -39,9 +39,9 @@ int	index_handler(va_list ap, const char *format)
 	return (print_length);
 }
 
-int		print_conversion(va_list ap, const char index)
+int	print_conversion(va_list ap, const char index)
 {
-	t_Jump_index	convert[] = {
+	static t_Jump_index	convert[] = {
 	['c'] = &pf_putchar,
 	['s'] = &pf_putstr,
 	};
