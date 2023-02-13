@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 01:09:55 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/13 14:44:48 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ int	main(void)
 
 	str = "string";
 	c = 'c';
-	printf("ret = %d", ft_printf("Hello\n"));
-	printf("ret = %d", ft_printf("hello %s\n", str));
-	printf("ret = %d", ft_printf("hello %c\n", c));
-	printf("ret = %d", ft_printf("hello %M", c));
-	// printf("hello %M", c);
+	printf("ret = %d \n", ft_printf("Hello"));
+	printf("ret = %d \n", ft_printf("hello %s", str));
+	printf("ret = %d \n", ft_printf("hello %c", c));
+	printf("ret = %d \n", ft_printf("hello %M", c));
+	printf("\n\n\n");
+	printf("ret = %d", printf("Hello\n"));
+	printf("ret = %d", printf("hello %s\n", str));
+	printf("ret = %d", printf("hello %c\n", c));
+	// printf("ret = %d \n", printf("hello %M", c));
 	return (0);
 }
