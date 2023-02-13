@@ -6,13 +6,13 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 17:09:43 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/13 17:18:16 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			index_handler(va_list ap, const char *format)
+int			format_handler(va_list ap, const char *format)
 {
 	int	print_length;
 
