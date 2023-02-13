@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   char.c                                             :+:    :+:            */
+/*   string.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/16 19:16:13 by fras          #+#    #+#                 */
-/*   Updated: 2022/12/23 00:18:57 by fras          ########   odam.nl         */
+/*   Created: 2022/12/18 11:58:07 by fras          #+#    #+#                 */
+/*   Updated: 2023/02/13 17:23:25 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	pf_printer(const char c)
+int	putstr(va_list ap)
 {
-	write(1, &c, 1);
-	return (1);
+	char *str;
+
+	str = va_arg(ap, char *);
+	write(1, str, pf_strlen(str));
+	return(pf_strlen(str));
 }
 
-int	pf_putchar(va_list ap)
+int	strlen(const char *s)
 {
-	char c;
+	int	i;
 
-	c = va_arg(ap, int);
-	write(1, &c, 1);
-	return (1);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
