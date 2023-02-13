@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 14:49:27 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/13 17:09:43 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int			index_handler(va_list ap, const char *format)
 			format++;
 			if (*format == '%')
 				goto print;
-			if (*format != 'c' && *format != 's')
-				return(error(*format));
+			if (!conversions(*format))
+				return (error_invalid_conversion(*format));
 			print_length += print_conversion(ap, *format);
 			format++;
 		}
@@ -37,6 +37,11 @@ int			index_handler(va_list ap, const char *format)
 		}
 	}
 	return (print_length);
+}
+
+int	conversions(char conversion)
+{
+	return (conversion == 'c' || conversion == 's');
 }
 
 int	print_conversion(va_list ap, const char index)

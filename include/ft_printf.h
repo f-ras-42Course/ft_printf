@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 14:54:33 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/13 17:06:38 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 
 #define _RED		"\e[1;31m"
 #define _WHITE		"\e[1;37m"
-#define _RESET	"\e[0m"
-
+#define _RESET		"\e[0m"
 
 typedef int (*t_Jump_index)(va_list);
 
@@ -31,6 +30,8 @@ int		pf_printer(const char c);
 int		pf_strlen(const char *str);
 int		pf_putchar(va_list ap);
 int		pf_putstr(va_list ap);
-int		error(char c);
+int		conversions(char conversion);
+void	error(void);
+int		error_invalid_conversion(char conversion);
 
 #endif
