@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 17:23:31 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/13 17:26:57 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef int (*t_Jump_index)(va_list);
 int		ft_printf(const char *format, ...);
 int		format_handler(va_list ap, const char *format);
 int		print_conversion(va_list ap, const char index);
-int		printer(const char c);
-int		strlen(const char *str);
-int		putchar(va_list ap);
-int		putstr(va_list ap);
+int		helper_printer(const char c);
+int		helper_strlen(const char *str);
+int		helper_putchar(va_list ap);
+int		helper_putstr(va_list ap);
 int		conversions(char conversion);
 void	error(void);
 int		error_invalid_conversion(char conversion);
