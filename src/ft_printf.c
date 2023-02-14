@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:34:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 17:18:46 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/14 13:53:27 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf(const char *format, ...)
 {
-	int print_length;
+	int		print_length;
 	va_list	ap;
 
 	va_start(ap, format);

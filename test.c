@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 14:44:48 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/14 13:48:41 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(void)
 {
-	char *str;
-	char c;
+	char	*str;
+	char	c;
 
 	str = "string";
 	c = 'c';

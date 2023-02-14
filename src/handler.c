@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/13 17:27:28 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/14 13:55:06 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int	print_conversion(va_list ap, const char index)
 	['c'] = &helper_putchar,
 	['s'] = &helper_putstr,
 	};
-	
-	return(convert[(unsigned int)index](ap));
+
+	return (convert[(unsigned int)index](ap));
 }
