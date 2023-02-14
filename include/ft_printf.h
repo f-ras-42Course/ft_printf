@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/14 13:50:58 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/14 19:15:01 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		helper_printer(const char c);
 int		helper_strlen(const char *str);
 int		helper_putchar(va_list ap);
 int		helper_putstr(va_list ap);
+int		pfhelper_putnbr(va_list ap);
+int		helper_numprint(int num, int *len);
 int		conversions(char conversion);
 void	error(void);
 int		error_invalid_conversion(char conversion);
