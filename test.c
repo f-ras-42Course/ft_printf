@@ -6,14 +6,19 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/14 19:14:42 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/15 18:24:16 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <fcntl.h>
+#define filename "outputresults.txt"
+#define MAX_BYTES_PRINT 128
 
-void tester (int ft_ret, int org_ret, int testcase);
+void	tester (int ft_ret, int org_ret, int testcase);
+void	printtofile(int reset);
+void 	filetostring(char *dest);
 
 int	main(void)
 {
@@ -24,6 +29,10 @@ int	main(void)
 	int		num3;
 	int		num4;
 	int		test;
+	char	ft_output[MAX_BYTES_PRINT];
+	char	org_output[MAX_BYTES_PRINT];
+	// int		ft_return;
+	// int		org_return;
 
 	str = "string";
 	c = 'c';
@@ -32,37 +41,83 @@ int	main(void)
 	num3 = -12346;
 	num4 = -2147483648;
 	test = 1;
-	ft_printf("Hello");
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %s", str));
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %c", c));
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num1));
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num2));
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num3));
-	printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num4));
-	printf("\n\n");
+	// ft_printf("Hello");
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %s", str));
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %c", c));
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num1));
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num2));
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num3));
+	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num4));
+	// printf("\n\n");
+	// test = 1;
+	// printf(" | [%d] org_ret = %d\n", test++, printf("Hello"));
+	// printf(" | [%d] org_ret = %d\n", test++, printf("hello %s", str));
+	// printf(" | [%d] org_ret = %d\n", test++, printf("hello %c", c));
+	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num1));
+	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num2));
+	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num3));
+	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num4));
+	// printf("\n\n");
 	test = 1;
-	printf(" | [%d] org_ret = %d\n", test++, printf("Hello"));
-	printf(" | [%d] org_ret = %d\n", test++, printf("hello %s", str));
-	printf(" | [%d] org_ret = %d\n", test++, printf("hello %c", c));
-	printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num1));
-	printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num2));
-	printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num3));
-	printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num4));
-	// tester(ft_printf("Hello"), printf("Hello"), test++);
-	// tester(ft_printf("hello %s", str), printf("hello %s", str), test++);
+	printtofile(0);
+	printtofile(1);
+	ft_printf("HelloF\n");
+	filetostring(ft_output);
+	printtofile(0);
+	ft_printf("HelloO\n");
+	filetostring(org_output);
+	printtofile(0);
+	test++;
+	printtofile(2);
+	tester(ft_printf("1hello %s\n", str), printf("2hello %s\n", str), test++);
+	// printtofile(2);
+	// printtofile(3);
 	printf("\n\nError methods:\n");
 	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
+	printf("[1]%s, [2]%s\n", ft_output, org_output);
 	return (0);
 }
 
-// void tester (int ft_ret, int org_ret, int testcase)
-// {
-// 	printf("TEST [%d]\n", testcase);
-// 	if (ft_ret != org_ret)
-// 	{
-// 		printf(_RED "STOP! Different return value (org = %d vs ft = %d)\n" _RESET, ft_ret, org_ret);
-// 		exit(0);
-// 	}
-// 	else
-// 		printf(" - same return value.");
-// }
+void	printtofile(int mode)
+{
+	static int 	stdout_fd;
+	static int 	redir_fd;
+
+	fflush(stdout);
+	if (mode == 0)
+		redir_fd = creat(filename, 0644);
+	if (mode == 1)
+	{
+		stdout_fd = dup(STDOUT_FILENO);
+		dup2(redir_fd, STDOUT_FILENO);
+		close(redir_fd);
+	}
+	if (mode == 2)
+	{
+		dup2(stdout_fd, STDOUT_FILENO);
+		close(stdout_fd);
+	}
+	if (mode == 3)
+		remove(filename);
+}
+
+void 	filetostring(char *dest)
+{
+	int fd;
+
+	fd = open(filename, O_RDONLY);
+	read(fd, dest, MAX_BYTES_PRINT);
+	close(fd);
+}
+
+void	tester (int ft_ret, int org_ret, int testcase)
+{
+	printf("   | TEST [%d]", testcase);
+	if (ft_ret != org_ret)
+	{
+		printf(_RED "STOP! Different return value (org = %d vs ft = %d)\n" _RESET, ft_ret, org_ret);
+		exit(0);
+	}
+	else
+		printf(" - same return value.\n");
+}
