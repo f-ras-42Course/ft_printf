@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/15 14:42:05 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/15 14:47:26 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	conversions(char conversion)
 int	print_conversion(va_list ap, const char index)
 {
 	t_Jump_index	convert[] = {
-	['c'] = &helper_putchar,
-	['s'] = &helper_putstr,
+	['c'] = &pfhelper_putchar,
+	['s'] = &pfhelper_putstr,
 	['i'] = &pfhelper_putnbr,
 	['d'] = &pfhelper_putnbr,
 	};

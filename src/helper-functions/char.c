@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 19:16:13 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/14 13:55:29 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/15 14:44:14 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	helper_printer(const char c)
 	return (1);
 }
 
-int	helper_putchar(va_list ap)
+int	pfhelper_putchar(va_list ap)
 {
 	char	c;
 

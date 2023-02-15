@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/14 19:15:01 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/15 14:47:31 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		format_handler(va_list ap, const char *format);
 int		print_conversion(va_list ap, const char index);
 int		helper_printer(const char c);
 int		helper_strlen(const char *str);
-int		helper_putchar(va_list ap);
-int		helper_putstr(va_list ap);
+int		pfhelper_putchar(va_list ap);
+int		pfhelper_putstr(va_list ap);
 int		pfhelper_putnbr(va_list ap);
 int		helper_numprint(int num, int *len);
 int		conversions(char conversion);
