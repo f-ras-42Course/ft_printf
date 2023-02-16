@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 16:35:03 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 16:46:52 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,12 @@ int	main(void)
 	test = 1;
 	ft_return = 0;
 	org_return = 0;
-	// ft_printf("Hello");
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %s", str));
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %c", c));
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num1));
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num2));
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num3));
-	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %d", num4));
-	// printf("\n\n");
-	// test = 1;
-	// printf(" | [%d] org_ret = %d\n", test++, printf("Hello"));
-	// printf(" | [%d] org_ret = %d\n", test++, printf("hello %s", str));
-	// printf(" | [%d] org_ret = %d\n", test++, printf("hello %c", c));
-	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num1));
-	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num2));
-	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num3));
-	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num4));
-	// printf("\n\n");
 	test = 0;
 	printtofile(0);
 	printtofile(1);
 	ft_return += ft_printf("Hello\n");
 	ft_return += ft_printf("hello %s\n", str);
-	ft_return += ft_printf("hello %s\n", empty_str);
+	ft_return += ft_printf("%s", empty_str);
 	ft_return += ft_printf("hello %c\n", c);
 	ft_return += ft_printf("hello %d\n", num1);
 	ft_return += ft_printf("hello %d\n", num2);
@@ -78,7 +61,7 @@ int	main(void)
 	printtofile(1);
 	org_return += printf("Hello\n");
 	org_return += printf("hello %s\n", str);
-	org_return += printf("hello %s\n", empty_str);
+	org_return += printf("%s", empty_str);
 	org_return += printf("hello %c\n", c);
 	org_return += printf("hello %d\n", num1);
 	org_return += printf("hello %d\n", num2);
