@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/15 14:47:31 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 17:27:30 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		helper_numprint(int num, int *len);
 int		conversions(char conversion);
 void	error(void);
 int		error_invalid_conversion(char conversion);
+int		error_incomplete_format(void);
 
 #endif

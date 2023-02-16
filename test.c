@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 16:46:52 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 17:33:29 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ int	main(void)
 	else
 		printf("TEST [%d] - same output value." _RESET, test++);
 	tester(ft_return, org_return, test);
-	printf("\n\nError methods:\n");
+	printf("\n\nError methods (undefined behaviour):\n");
 	fflush(stdout);
-	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
+	printf("\n | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
+	fflush(stdout);
+	printf("\n | [ERROR 2] ft_ret = %d \n", ft_printf("%%%"));
+	fflush(stdout);
 	return (0);
 }
 
@@ -120,7 +123,7 @@ void	tester (int ft_ret, int org_ret, int testcase)
 	printf("   | TEST [%d]", testcase);
 	if (ft_ret != org_ret)
 	{
-		printf(_RED "STOP! Different return value (org = %d vs ft = %d)\n" _RESET, ft_ret, org_ret);
+		printf(_RED "STOP! Different return value (ft = %d vs org = %d)\n" _RESET, ft_ret, org_ret);
 		exit(0);
 	}
 	else
