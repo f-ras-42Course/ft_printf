@@ -6,14 +6,14 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/15 18:24:16 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 15:38:40 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <fcntl.h>
-#define filename "outputresults.txt"
+#define filename "outputresults"
 #define MAX_BYTES_PRINT 128
 
 void	tester (int ft_ret, int org_ret, int testcase);
@@ -63,15 +63,13 @@ int	main(void)
 	printtofile(1);
 	ft_printf("HelloF\n");
 	filetostring(ft_output);
-	printtofile(0);
+	printtofile(1);
 	ft_printf("HelloO\n");
 	filetostring(org_output);
-	printtofile(0);
-	test++;
 	printtofile(2);
+	test++;
 	tester(ft_printf("1hello %s\n", str), printf("2hello %s\n", str), test++);
-	// printtofile(2);
-	// printtofile(3);
+	printtofile(3);
 	printf("\n\nError methods:\n");
 	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
@@ -85,10 +83,10 @@ void	printtofile(int mode)
 
 	fflush(stdout);
 	if (mode == 0)
-		redir_fd = creat(filename, 0644);
+		stdout_fd = dup(STDOUT_FILENO);
 	if (mode == 1)
 	{
-		stdout_fd = dup(STDOUT_FILENO);
+		redir_fd = creat(filename, 0644);
 		dup2(redir_fd, STDOUT_FILENO);
 		close(redir_fd);
 	}
