@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 16:11:21 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 16:21:55 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(void)
 	int		test;
 	char	ft_output[MAX_BYTES_PRINT];
 	char	org_output[MAX_BYTES_PRINT];
-	// int		ft_return;
-	// int		org_return;
+	int		ft_return;
+	int		org_return;
 
 	str = "string";
 	c = 'c';
@@ -41,6 +41,8 @@ int	main(void)
 	num3 = -12346;
 	num4 = -2147483648;
 	test = 1;
+	ft_return = 0;
+	org_return = 0;
 	// ft_printf("Hello");
 	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %s", str));
 	// printf(" | [%d] ft_ret = %d \n", test++, ft_printf("hello %c", c));
@@ -58,33 +60,33 @@ int	main(void)
 	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num3));
 	// printf(" | [%d] org_ret = %d \n", test++, printf("hello %d", num4));
 	// printf("\n\n");
-	test = 1;
+	test = 0;
 	printtofile(0);
 	printtofile(1);
-	ft_printf("HelloF\n");
-	ft_printf("hello %s\n", str);
-	ft_printf("hello %c\n", c);
-	ft_printf("hello %d\n", num1);
-	ft_printf("hello %d\n", num2);
-	ft_printf("hello %d\n", num3);
-	 ft_printf("hello %d\n", num4);
+	ft_return += ft_printf("Hello\n");
+	ft_return += ft_printf("hello %s\n", str);
+	ft_return += ft_printf("hello %c\n", c);
+	ft_return += ft_printf("hello %d\n", num1);
+	ft_return += ft_printf("hello %d\n", num2);
+	ft_return += ft_printf("hello %d\n", num3);
+	ft_return += ft_printf("hello %d\n", num4);
 	filetostring(ft_output);
 	printtofile(1);
-	printf("HelloO\n");
-	printf("hello %s\n", str);
-	printf("hello %c\n", c);
-	printf("hello %d\n", num1);
-	printf("hello %d\n", num2);
-	printf("hello %d\n", num3);
-	printf("hello %d\n", num4);
+	org_return += printf("Hello\n");
+	org_return += printf("hello %s\n", str);
+	org_return += printf("hello %c\n", c);
+	org_return += printf("hello %d\n", num1);
+	org_return += printf("hello %d\n", num2);
+	org_return += printf("hello %d\n", num3);
+	org_return += printf("hello %d\n", num4);
 	filetostring(org_output);
 	printtofile(2);
-	test++;
-	// tester(ft_printf("1hello %s\n", str), printf("2hello %s\n", str), test++);
 	printtofile(3);
-	printf("\n\nError methods:\n");
-	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
+	tester(ft_return, org_return, test);
+	printf("\n\nError methods:\n");
+	fflush(stdout);
+	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
 	return (0);
 }
 
@@ -130,5 +132,5 @@ void	tester (int ft_ret, int org_ret, int testcase)
 		exit(0);
 	}
 	else
-		printf(" - same return value.\n");
+		printf(" - same return value. %d, %d\n", ft_ret, org_ret);
 }
