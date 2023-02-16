@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 15:38:40 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 16:11:21 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,25 @@ int	main(void)
 	printtofile(0);
 	printtofile(1);
 	ft_printf("HelloF\n");
+	ft_printf("hello %s\n", str);
+	ft_printf("hello %c\n", c);
+	ft_printf("hello %d\n", num1);
+	ft_printf("hello %d\n", num2);
+	ft_printf("hello %d\n", num3);
+	 ft_printf("hello %d\n", num4);
 	filetostring(ft_output);
 	printtofile(1);
-	ft_printf("HelloO\n");
+	printf("HelloO\n");
+	printf("hello %s\n", str);
+	printf("hello %c\n", c);
+	printf("hello %d\n", num1);
+	printf("hello %d\n", num2);
+	printf("hello %d\n", num3);
+	printf("hello %d\n", num4);
 	filetostring(org_output);
 	printtofile(2);
 	test++;
-	tester(ft_printf("1hello %s\n", str), printf("2hello %s\n", str), test++);
+	// tester(ft_printf("1hello %s\n", str), printf("2hello %s\n", str), test++);
 	printtofile(3);
 	printf("\n\nError methods:\n");
 	printf(" | [ERROR 1] ft_ret = %d \n", ft_printf("hello %M", c));
@@ -103,6 +115,7 @@ void 	filetostring(char *dest)
 {
 	int fd;
 
+	fflush(stdout);
 	fd = open(filename, O_RDONLY);
 	read(fd, dest, MAX_BYTES_PRINT);
 	close(fd);
