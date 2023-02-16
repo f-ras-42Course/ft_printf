@@ -6,12 +6,13 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 16:21:55 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/16 16:35:03 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <string.h>
 #include <fcntl.h>
 #define filename "outputresults"
 #define MAX_BYTES_PRINT 128
@@ -23,6 +24,7 @@ void 	filetostring(char *dest);
 int	main(void)
 {
 	char	*str;
+	char	*empty_str;
 	char	c;
 	int		num1;
 	int		num2;
@@ -35,6 +37,7 @@ int	main(void)
 	int		org_return;
 
 	str = "string";
+	empty_str = "";
 	c = 'c';
 	num1 = 0;
 	num2 = 12346;
@@ -65,6 +68,7 @@ int	main(void)
 	printtofile(1);
 	ft_return += ft_printf("Hello\n");
 	ft_return += ft_printf("hello %s\n", str);
+	ft_return += ft_printf("hello %s\n", empty_str);
 	ft_return += ft_printf("hello %c\n", c);
 	ft_return += ft_printf("hello %d\n", num1);
 	ft_return += ft_printf("hello %d\n", num2);
@@ -74,6 +78,7 @@ int	main(void)
 	printtofile(1);
 	org_return += printf("Hello\n");
 	org_return += printf("hello %s\n", str);
+	org_return += printf("hello %s\n", empty_str);
 	org_return += printf("hello %c\n", c);
 	org_return += printf("hello %d\n", num1);
 	org_return += printf("hello %d\n", num2);
@@ -83,6 +88,10 @@ int	main(void)
 	printtofile(2);
 	printtofile(3);
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
+	if (strcmp(ft_output, org_output) != 0)
+		printf("TEST [%d]" _RED "STOP! Incorrect output values." _RESET, test++);
+	else
+		printf("TEST [%d] - same output value." _RESET, test++);
 	tester(ft_return, org_return, test);
 	printf("\n\nError methods:\n");
 	fflush(stdout);
