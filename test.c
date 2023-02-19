@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/16 17:33:29 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/19 18:42:10 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ void 	filetostring(char *dest);
 
 int	main(void)
 {
-	char	*str;
-	char	*empty_str;
-	char	c;
-	int		num1;
-	int		num2;
-	int		num3;
-	int		num4;
-	int		test;
-	char	ft_output[MAX_BYTES_PRINT];
-	char	org_output[MAX_BYTES_PRINT];
-	int		ft_return;
-	int		org_return;
+	char				*str;
+	char				*empty_str;
+	char				c;
+	int					num1;
+	int					num2;
+	int					num3;
+	int					num4;
+	unsigned int		num5;
+	int					test;
+	char				ft_output[MAX_BYTES_PRINT];
+	char				org_output[MAX_BYTES_PRINT];
+	int					ft_return;
+	int					org_return;
 
 	str = "string";
 	empty_str = "";
@@ -43,6 +44,7 @@ int	main(void)
 	num2 = 12346;
 	num3 = -12346;
 	num4 = -2147483648;
+	num5 = 4294967295;
 	test = 1;
 	ft_return = 0;
 	org_return = 0;
@@ -55,8 +57,9 @@ int	main(void)
 	ft_return += ft_printf("hello %c\n", c);
 	ft_return += ft_printf("hello %d\n", num1);
 	ft_return += ft_printf("hello %d\n", num2);
-	ft_return += ft_printf("hello %d\n", num3);
+	ft_return += ft_printf("hello %i\n", num3);
 	ft_return += ft_printf("hello %d\n", num4);
+	ft_return += ft_printf("hello %u\n", num5);
 	filetostring(ft_output);
 	printtofile(1);
 	org_return += printf("Hello\n");
@@ -65,8 +68,9 @@ int	main(void)
 	org_return += printf("hello %c\n", c);
 	org_return += printf("hello %d\n", num1);
 	org_return += printf("hello %d\n", num2);
-	org_return += printf("hello %d\n", num3);
+	org_return += printf("hello %i\n", num3);
 	org_return += printf("hello %d\n", num4);
+	org_return += printf("hello %u\n", num5);
 	filetostring(org_output);
 	printtofile(2);
 	printtofile(3);
