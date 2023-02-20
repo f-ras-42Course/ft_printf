@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/20 18:16:52 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/20 18:21:11 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,6 @@ int	main(void)
 	fflush(stdout);
 	printf("\n | [ERROR 2] ft_ret = %d \n", ft_printf("%%%"));
 	fflush(stdout);
-	printf("PTR TEST1: %p\n", ptrtest);
-	ft_printf("PTR TEST1: %p\n", ptrtest);
-	ft_printf("ABCCCCCC: %s\n", "abc%\0abc");
-	printf("ABCCCCCC: %s\n", "abc%\0abc");
 	return (0);
 }
 
