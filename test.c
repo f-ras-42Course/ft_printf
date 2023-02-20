@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/20 16:22:32 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/20 18:16:52 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <fcntl.h>
 #define filename "outputresults"
-#define MAX_BYTES_PRINT 128
+#define MAX_BYTES_PRINT 256
 
 void	tester (int ft_ret, int org_ret, int testcase);
 void	printtofile(int reset);
@@ -31,12 +31,14 @@ int	main(void)
 	int					num3;
 	int					num4;
 	unsigned int		num5;
-	// unsigned int		*num6;
+	unsigned long		num6;
 	int					test;
 	char				ft_output[MAX_BYTES_PRINT];
 	char				org_output[MAX_BYTES_PRINT];
 	int					ft_return;
 	int					org_return;
+	char 				*ptrtest;
+	char 				*ptrtest2;
 
 	str = "string";
 	empty_str = "";
@@ -46,7 +48,10 @@ int	main(void)
 	num3 = -12346;
 	num4 = -2147483648;
 	num5 = 4294967295;
-	// num6 = &num5;
+	num6 = 9223372036854775807;
+
+	ptrtest = (char *)0x100000042;
+	ptrtest2 = (char *)0xffffffff;
 	test = 1;
 	ft_return = 0;
 	org_return = 0;
@@ -62,6 +67,16 @@ int	main(void)
 	ft_return += ft_printf("hello %i\n", num3);
 	ft_return += ft_printf("hello %d\n", num4);
 	ft_return += ft_printf("hello %u\n", num5);
+	ft_return += ft_printf("HEXA1 %x\n", 29);
+	ft_return += ft_printf("HEXA2 %x\n", 1029);
+	ft_return += ft_printf("HEXA3 %x\n", 268431615);
+	ft_return += ft_printf("HEXA4 %x\n", num5);
+	ft_return += ft_printf("HEXA5 %x\n", num5 + 2);
+	ft_return += ft_printf("HEXA6 %x\n", -1);
+	ft_return += ft_printf("HEXA7 %x\n", 0);
+	ft_return += ft_printf("PTR TEST1: %p\n", ptrtest);
+	ft_return += ft_printf("PTR TEST2: %p\n", ptrtest2);
+	ft_return += ft_printf("ABC: %s\n", "abc%\0abc");
 	filetostring(ft_output);
 	printtofile(1);
 	org_return += printf("Hello\n");
@@ -73,6 +88,16 @@ int	main(void)
 	org_return += printf("hello %i\n", num3);
 	org_return += printf("hello %d\n", num4);
 	org_return += printf("hello %u\n", num5);
+	org_return += printf("HEXA1 %x\n", 29);
+	org_return += printf("HEXA2 %x\n", 1029);
+	org_return += printf("HEXA3 %x\n", 268431615);
+	org_return += printf("HEXA4 %x\n", num5);
+	org_return += printf("HEXA5 %x\n", num5 + 2);
+	org_return += printf("HEXA6 %x\n", -1);
+	org_return += printf("HEXA7 %x\n", 0);
+	org_return += printf("PTR TEST1: %p\n", ptrtest);
+	org_return += printf("PTR TEST2: %p\n", ptrtest2);
+	org_return += printf("ABC: %s\n", "abc%\0abc");
 	filetostring(org_output);
 	printtofile(2);
 	printtofile(3);
@@ -88,17 +113,10 @@ int	main(void)
 	fflush(stdout);
 	printf("\n | [ERROR 2] ft_ret = %d \n", ft_printf("%%%"));
 	fflush(stdout);
-	printf("HEXA %x\n", 29);
-	ft_printf("hexa: %x\n", 29);
-	printf("HEXA %x\n", 1029);
-	ft_printf("hexa: %x\n", 1029);
-	printf("HEXA %x\n", 268431615);
-	ft_printf("hexa: %x\n", 268431615);
-	printf("HEXA %x\n", -1);
-	ft_printf("hexa: %x\n", -1);
-	printf("HEXA %x\n", 0);
-	ft_printf("hexa: %x\n", 0);
-	// printf("POINTER ADDRESS: %d\n", &num5);
+	printf("PTR TEST1: %p\n", ptrtest);
+	ft_printf("PTR TEST1: %p\n", ptrtest);
+	ft_printf("ABCCCCCC: %s\n", "abc%\0abc");
+	printf("ABCCCCCC: %s\n", "abc%\0abc");
 	return (0);
 }
 

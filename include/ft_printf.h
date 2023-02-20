@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/20 15:12:02 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/20 18:17:42 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		pfhelper_putpointeraddress(va_list ap);
 int		pfhelper_puthex(va_list ap);
 int		helper_numprint(int num, int *len);
 int		helper_numprint_unsigned(unsigned int num, int *len);
-int		helper_dec_to_hexconverter(unsigned int dec, int *len);
+int		helper_dec_to_hexconverter(size_t dec, int *len);
 int		conversions(char conversion);
 void	error(void);
 int		error_invalid_conversion(char conversion);

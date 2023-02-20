@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/20 16:03:25 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/20 18:18:40 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	print_conversion(va_list ap, const char index)
 	['d'] = &pfhelper_putnbr,
 	['u'] = &pfhelper_putnbr_unsigned,
 	['x'] = &pfhelper_puthex,
-	// ['p'] = &pfhelper_putpointeraddress,
+	['p'] = &pfhelper_putpointeraddress,
 	};
 
 	return (convert[(unsigned int)index](ap));
