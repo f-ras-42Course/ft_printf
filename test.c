@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/19 18:42:10 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/20 16:22:32 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(void)
 	int					num3;
 	int					num4;
 	unsigned int		num5;
+	// unsigned int		*num6;
 	int					test;
 	char				ft_output[MAX_BYTES_PRINT];
 	char				org_output[MAX_BYTES_PRINT];
@@ -45,6 +46,7 @@ int	main(void)
 	num3 = -12346;
 	num4 = -2147483648;
 	num5 = 4294967295;
+	// num6 = &num5;
 	test = 1;
 	ft_return = 0;
 	org_return = 0;
@@ -86,6 +88,17 @@ int	main(void)
 	fflush(stdout);
 	printf("\n | [ERROR 2] ft_ret = %d \n", ft_printf("%%%"));
 	fflush(stdout);
+	printf("HEXA %x\n", 29);
+	ft_printf("hexa: %x\n", 29);
+	printf("HEXA %x\n", 1029);
+	ft_printf("hexa: %x\n", 1029);
+	printf("HEXA %x\n", 268431615);
+	ft_printf("hexa: %x\n", 268431615);
+	printf("HEXA %x\n", -1);
+	ft_printf("hexa: %x\n", -1);
+	printf("HEXA %x\n", 0);
+	ft_printf("hexa: %x\n", 0);
+	// printf("POINTER ADDRESS: %d\n", &num5);
 	return (0);
 }
 
