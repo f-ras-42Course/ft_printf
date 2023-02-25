@@ -17,6 +17,8 @@ int	pfhelper_putstr(va_list ap)
 	char	*str;
 
 	str = va_arg(ap, char *);
+	if (!str)
+		return(write(1, "(null)", 6));
 	write(1, str, helper_strlen(str));
 	return (helper_strlen(str));
 }

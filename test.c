@@ -15,7 +15,7 @@
 #include <string.h>
 #include <fcntl.h>
 #define filename "outputresults"
-#define MAX_BYTES_PRINT 256
+#define MAX_BYTES_PRINT 512
 
 void	tester (int ft_ret, int org_ret, int testcase);
 void	printtofile(int reset);
@@ -31,7 +31,6 @@ int	main(void)
 	int					num3;
 	int					num4;
 	unsigned int		num5;
-	unsigned long		num6;
 	int					test;
 	char				ft_output[MAX_BYTES_PRINT];
 	char				org_output[MAX_BYTES_PRINT];
@@ -39,6 +38,7 @@ int	main(void)
 	int					org_return;
 	char 				*ptrtest;
 	char 				*ptrtest2;
+	int					i;
 
 	str = "string";
 	empty_str = "";
@@ -48,7 +48,6 @@ int	main(void)
 	num3 = -12346;
 	num4 = -2147483648;
 	num5 = 4294967295;
-	num6 = 9223372036854775807;
 
 	ptrtest = (char *)0x100000042;
 	ptrtest2 = (char *)0xffffffff;
@@ -74,9 +73,18 @@ int	main(void)
 	ft_return += ft_printf("HEXA5 %x\n", num5 + 2);
 	ft_return += ft_printf("HEXA6 %x\n", -1);
 	ft_return += ft_printf("HEXA7 %x\n", 0);
+	i = 1;
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 29);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 1029);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 268431615);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, num5);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, num5 + 2);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, -1);
+	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 0);
 	ft_return += ft_printf("PTR TEST1: %p\n", ptrtest);
 	ft_return += ft_printf("PTR TEST2: %p\n", ptrtest2);
 	ft_return += ft_printf("ABC: %s\n", "abc%\0abc");
+	ft_return += ft_printf("%s\n", (char *)NULL);
 	filetostring(ft_output);
 	printtofile(1);
 	org_return += printf("Hello\n");
@@ -95,14 +103,23 @@ int	main(void)
 	org_return += printf("HEXA5 %x\n", num5 + 2);
 	org_return += printf("HEXA6 %x\n", -1);
 	org_return += printf("HEXA7 %x\n", 0);
+	i = 1;
+	org_return += printf("HEXA%d UPPER %X\n", i++, 29);
+	org_return += printf("HEXA%d UPPER %X\n", i++, 1029);
+	org_return += printf("HEXA%d UPPER %X\n", i++, 268431615);
+	org_return += printf("HEXA%d UPPER %X\n", i++, num5);
+	org_return += printf("HEXA%d UPPER %X\n", i++, num5 + 2);
+	org_return += printf("HEXA%d UPPER %X\n", i++, -1);
+	org_return += printf("HEXA%d UPPER %X\n", i++, 0);
 	org_return += printf("PTR TEST1: %p\n", ptrtest);
 	org_return += printf("PTR TEST2: %p\n", ptrtest2);
 	org_return += printf("ABC: %s\n", "abc%\0abc");
+	org_return += printf("%s\n", (char *)NULL);
 	filetostring(org_output);
 	printtofile(2);
 	printtofile(3);
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
-	if (strcmp(ft_output, org_output) != 0)
+	if (memcmp(ft_output, org_output, 357) != 0)
 		printf("TEST [%d]" _RED "STOP! Incorrect output values." _RESET, test++);
 	else
 		printf("TEST [%d] - same output value." _RESET, test++);
