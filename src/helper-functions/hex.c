@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/14 15:05:25 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/25 10:04:08 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 20:16:54 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	pfhelper_putpointeraddress(va_list ap)
 	len = 0;
 	len += write(1, "0x", 2);
 	len += helper_dec_to_hexconverter(address, &len, LOWERCASE);
-	return(len);
+	return (len);
 }
 
-int pfhelper_puthex_lowercase(va_list ap)
+int	pfhelper_puthex_lowercase(va_list ap)
 {
-	unsigned int dec;
-	int 		len;
+	unsigned int	dec;
+	int				len;
 
 	dec = va_arg(ap, unsigned int);
 	len = 0;
@@ -35,10 +35,10 @@ int pfhelper_puthex_lowercase(va_list ap)
 	return (len);
 }
 
-int pfhelper_puthex_uppercase(va_list ap)
+int	pfhelper_puthex_uppercase(va_list ap)
 {
-	unsigned int dec;
-	int 		len;
+	unsigned int	dec;
+	int				len;
 
 	dec = va_arg(ap, unsigned int);
 	len = 0;

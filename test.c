@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/20 18:21:11 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 20:11:29 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(void)
 	printtofile(2);
 	printtofile(3);
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
-	if (memcmp(ft_output, org_output, 357) != 0)
+	if (strcmp(ft_output, org_output) != 0)
 		printf("TEST [%d]" _RED "STOP! Incorrect output values." _RESET, test++);
 	else
 		printf("TEST [%d] - same output value." _RESET, test++);

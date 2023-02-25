@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 20:09:43 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/21 17:36:06 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 20:06:31 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int	format_handler(va_list ap, const char *format)
 
 int	conversions(char conversion)
 {
-	return (conversion == 'c' || conversion == 's' || conversion == 'd' ||
-			conversion == 'i' || conversion == 'u' || conversion == 'x' ||
-			conversion == 'X' || conversion == 'p');
+	return (conversion == 'c' || conversion == 's' || conversion == 'd'
+		|| conversion == 'i' || conversion == 'u' || conversion == 'x'
+		|| conversion == 'X' || conversion == 'p');
 }
 
 int	print_conversion(va_list ap, const char index)
 {
-	t_Jump_index	convert[] = {
+	static const t_Jump_index	convert[] = {
 	['c'] = &pfhelper_putchar,
 	['s'] = &pfhelper_putstr,
 	['i'] = &pfhelper_putnbr,

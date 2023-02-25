@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/16 14:35:07 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/21 17:35:45 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 18:52:16 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define _RESET		"\e[0m"
 # define LOWERCASE	1
 # define UPPERCASE	2
-
 
 typedef int	(*t_Jump_index)(va_list);
 

@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/23 00:40:47 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/19 18:17:52 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 18:53:53 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error(void)
 int	error_invalid_conversion(char conversion)
 {
 	if (conversion == '\0')
-		return(error_incomplete_format());
+		return (error_incomplete_format());
 	error();
 	write(2, _WHITE "invalid conversion specifier '", 37);
 	write(2, &conversion, 1);
@@ -29,7 +29,7 @@ int	error_invalid_conversion(char conversion)
 	return (-1);
 }
 
-int error_incomplete_format(void)
+int	error_incomplete_format(void)
 {
 	error();
 	write(2, _WHITE "incomplete format specifier", 36);
