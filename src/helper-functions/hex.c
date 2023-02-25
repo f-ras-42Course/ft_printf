@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/14 15:05:25 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/21 17:35:53 by fras          ########   odam.nl         */
+/*   Updated: 2023/02/25 10:04:08 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int	helper_dec_to_hexconverter(size_t dec, int *len, int mode)
 	if (dec >= 16)
 	{
 		*len += helper_dec_to_hexconverter(dec / 16, len, mode);
-		if ((dec % 16) > 9 && (dec % 16) < 16 && mode == LOWERCASE)
-			return (helper_printer((dec % 16) % 10 + 'a'));
-		else if ((dec % 16) > 9 && (dec % 16) < 16 && mode == UPPERCASE)
-			return (helper_printer((dec % 16) % 10 + 'A'));
-		else
+		if ((dec % 16) <= 9)
 			return (helper_printer((dec % 16) + '0'));
+		else if (mode == LOWERCASE)
+			return (helper_printer((dec % 16) % 10 + 'a'));
+		else
+			return (helper_printer((dec % 16) % 10 + 'A'));
 	}
 	return (0);
 }
