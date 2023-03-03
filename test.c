@@ -119,7 +119,7 @@ int	main(void)
 	printtofile(2);
 	printtofile(3);
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
-	if (strcmp(ft_output, org_output) != 0)
+	if (memcmp(ft_output, org_output) != 0)
 		printf("TEST [%d]" _RED "STOP! Incorrect output values." _RESET, test++);
 	else
 		printf("TEST [%d] - same output value." _RESET, test++);
