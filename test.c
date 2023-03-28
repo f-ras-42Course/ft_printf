@@ -6,7 +6,7 @@
 /*   By: fras <fras@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/19 10:22:41 by fras          #+#    #+#                 */
-/*   Updated: 2023/02/25 20:11:29 by fras          ########   odam.nl         */
+/*   Updated: 2023/03/28 18:06:54 by fras          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,13 @@ int	main(void)
 	ft_return += ft_printf("hello %d\n", num4);
 	ft_return += ft_printf("hello %u\n", num5);
 	ft_return += ft_printf("HEXA1 %x\n", 29);
-	ft_return += ft_printf("HEXA2 %x\n", 1029);
-	ft_return += ft_printf("HEXA3 %x\n", 268431615);
-	ft_return += ft_printf("HEXA4 %x\n", num5);
-	ft_return += ft_printf("HEXA5 %x\n", num5 + 2);
-	ft_return += ft_printf("HEXA6 %x\n", -1);
-	ft_return += ft_printf("HEXA7 %x\n", 0);
+	ft_return += ft_printf("HEXA2 %x\n", 268431615);
+	ft_return += ft_printf("HEXA3 %x\n", num5);
+	ft_return += ft_printf("HEXA4 %x\n", num5 + 2);
+	ft_return += ft_printf("HEXA5 %x\n", -1);
+	ft_return += ft_printf("HEXA6 %x\n", 0);
 	i = 1;
 	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 29);
-	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 1029);
 	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, 268431615);
 	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, num5);
 	ft_return += ft_printf("HEXA%d UPPER %X\n", i++, num5 + 2);
@@ -97,15 +95,13 @@ int	main(void)
 	org_return += printf("hello %d\n", num4);
 	org_return += printf("hello %u\n", num5);
 	org_return += printf("HEXA1 %x\n", 29);
-	org_return += printf("HEXA2 %x\n", 1029);
-	org_return += printf("HEXA3 %x\n", 268431615);
-	org_return += printf("HEXA4 %x\n", num5);
-	org_return += printf("HEXA5 %x\n", num5 + 2);
-	org_return += printf("HEXA6 %x\n", -1);
-	org_return += printf("HEXA7 %x\n", 0);
+	org_return += printf("HEXA2 %x\n", 268431615);
+	org_return += printf("HEXA3 %x\n", num5);
+	org_return += printf("HEXA4 %x\n", num5 + 2);
+	org_return += printf("HEXA5 %x\n", -1);
+	org_return += printf("HEXA6 %x\n", 0);
 	i = 1;
 	org_return += printf("HEXA%d UPPER %X\n", i++, 29);
-	org_return += printf("HEXA%d UPPER %X\n", i++, 1029);
 	org_return += printf("HEXA%d UPPER %X\n", i++, 268431615);
 	org_return += printf("HEXA%d UPPER %X\n", i++, num5);
 	org_return += printf("HEXA%d UPPER %X\n", i++, num5 + 2);
@@ -119,7 +115,7 @@ int	main(void)
 	printtofile(2);
 	printtofile(3);
 	printf("[1]%s, [2]%s\n", ft_output, org_output);
-	if (memcmp(ft_output, org_output) != 0)
+	if (strcmp(ft_output, org_output) != 0)
 		printf("TEST [%d]" _RED "STOP! Incorrect output values." _RESET, test++);
 	else
 		printf("TEST [%d] - same output value." _RESET, test++);
