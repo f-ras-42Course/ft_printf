@@ -6,7 +6,7 @@
 #    By: fras <fras@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/16 14:34:17 by fras          #+#    #+#                  #
-#    Updated: 2022/12/22 23:59:56 by fras          ########   odam.nl          #
+#    Updated: 2023/05/19 21:52:47 by fras          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ TESTSRC = test.c
 
 .PHONY: all clean fclean re directories
 
-$(NAME): directories $(OBJECTS)
+$(NAME): $(OBJ_DIR) $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
+
+$(OBJ_DIR): directories
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^
