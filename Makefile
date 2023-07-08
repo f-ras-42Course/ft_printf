@@ -6,7 +6,7 @@
 #    By: fras <fras@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/12/16 14:34:17 by fras          #+#    #+#                  #
-#    Updated: 2023/05/19 21:52:47 by fras          ########   odam.nl          #
+#    Updated: 2023/07/08 22:00:29 by fras          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-test: $(TESTSRC) $(NAME)
-	$(CC) $(CFLAGS) $< -L. $(NAME) -o $@
