@@ -54,7 +54,7 @@ Include the `ft_printf.h` header in your source files:
 Link the compiled library when building your program:
 
 ```bash
-gcc your_program.c -L. -lftprintf -o your_program
+cc your_program.c -L. -libftprintf.a -o your_program
 ```
 
 Example:
