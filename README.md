@@ -1,6 +1,6 @@
 # ft_printf
 
-A custom implementation of the standard C library function `printf`, developed during my journey at **42 School**. This project was an exciting deep dive into variadic functions, formatted output, and low-level handling of variable arguments. It challenged me to explore the depths of C programming and refine my problem-solving skills.
+A custom implementation of the standard C library function `printf`, developed during my journey at 42. This project was an exciting deep dive into variadic functions, formatted output, and low-level handling of variable arguments. It challenged me to explore the depths of C programming and refine my problem-solving skills.
 
 ## Table of Contents
 
